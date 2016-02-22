@@ -86,11 +86,11 @@ static NSString *const kImageDetailViewControllerID = @"imageDetailViewControlle
             for (NSString *path in [paths reverseObjectEnumerator]) {
                 if ([path isImagePath]) {
                     [self.contents insertObject:[[NSImage alloc] initWithContentsOfFile:path] atIndex:index];
-                    dispatch_sync(dispatch_get_main_queue(), ^{
-                        [self.imageCollectionView setContent:self.contents];
-                    });
                 }
             }
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self.imageCollectionView setContent:self.contents];
+            });
         });
     }
     
